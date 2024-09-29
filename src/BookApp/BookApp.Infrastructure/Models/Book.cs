@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 
-namespace BookApp.Domain.models
+namespace BookApp.Infrastructure.Models
 {
     [Table("Livro")]
     public class Book
@@ -23,7 +22,7 @@ namespace BookApp.Domain.models
         public string YearPublication { get; set; }
 
         public ICollection<Author> Authors { get; set; }
-
+        
         public ICollection<Subject> Subjects { get; set; }
     }
 }

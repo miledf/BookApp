@@ -1,5 +1,4 @@
-﻿using Azure;
-using BookApp.Domain.models;
+﻿using BookApp.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.Infrastructure.Context

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BookApp.Domain.models
+namespace BookApp.Infrastructure.Models
 {
     [Table("Assunto")]
     public class Subject
