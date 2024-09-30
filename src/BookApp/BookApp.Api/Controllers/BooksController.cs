@@ -1,5 +1,4 @@
-﻿using BookApp.Common.report;
-using BookApp.Domain.Dtos.BookRequest;
+﻿using BookApp.Domain.Dtos.BookRequest;
 using BookApp.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
