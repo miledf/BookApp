@@ -2,7 +2,7 @@ import { Component, NgZoneOptions, OnInit } from '@angular/core';
 import { BookService } from '../../../services/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../../../models/book';
-import { BookFormComponent } from "../../../components/book-form/book-form.component";
+import { BookFormComponent } from "../book-form/book-form.component";
 
 @Component({
   selector: 'app-update-book',

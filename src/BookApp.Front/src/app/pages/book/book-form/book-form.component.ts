@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Book } from '../../models/book';
+import { Book } from '../../../models/book';
 
 @Component({
   selector: 'app-book-form',

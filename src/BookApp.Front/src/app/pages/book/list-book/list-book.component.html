@@ -1,11 +1,9 @@
-<div class="container mt-5">
-  <button
-    class="btn btn-success w-100"
-    [routerLink]="['/create-book']"
-    routerLinkActive="router-link-active"
-  >
+
+  <button    class="btn btn-success w-100"    [routerLink]="['/create-book']"  >
     Cadastrar novo Livro
   </button>
+  
+  <button    class="btn btn-info w-100 mt-2" (click)="download()" >  Download Relatório </button>
   <div>
     <!-- <label class="form-label">Pesquisar:</label> -->
     <input
@@ -14,6 +12,7 @@
       placeholder="Pesquise"
       (input)="search($event)"
     />
+    
   </div>
 
   <table class="table table-hover table-bordered mt-5">
@@ -48,4 +47,3 @@
       }
     </tbody>
   </table>
-</div>
