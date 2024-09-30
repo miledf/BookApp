@@ -1,3 +1,4 @@
+using BookApp.Api.Middlewares;
 using BookApp.Common.report;
 using BookApp.Domain.Services;
 using BookApp.Domain.Utils;
@@ -26,7 +27,9 @@ builder.Services.AddScoped<IReportBookService, ReportBookService>();
 builder.Services.AddScoped<BookViewGenerate>();
 builder.Services.AddScoped<PdfGenerator>();
 
-builder.Services.AddFluentValidation(fv=> fv.RegisterValidatorsFromAssemblyContaining<BookRequestValidator>());
+builder.Services.AddProblemDetails();
+
+builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<BookRequestValidator>());
 
 builder.Services.AddCors(options =>
 {
@@ -50,6 +53,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 
 app.UseHttpsRedirection();
+app.UseExceptionHandler();
 
 app.UseAuthorization();
 
