@@ -1,7 +1,5 @@
-using BookApp.Api.Middlewares;
 using BookApp.Common.report;
 using BookApp.Domain.Services;
-using BookApp.Domain.Utils;
 using BookApp.Domain.Validators;
 using BookApp.Infrastructure.Context;
 using FluentValidation.AspNetCore;
@@ -25,7 +23,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IReportBookService, ReportBookService>();
 builder.Services.AddScoped<BookViewGenerate>();
-builder.Services.AddScoped<PdfGenerator>();
 
 builder.Services.AddProblemDetails();
 

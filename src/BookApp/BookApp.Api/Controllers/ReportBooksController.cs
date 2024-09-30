@@ -1,6 +1,5 @@
 ﻿using BookApp.Common.report;
 using BookApp.Domain.Services;
-using BookApp.Domain.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Playwright;
 
@@ -11,13 +10,11 @@ namespace BookApp.Api.Controllers
     public class ReportBooksController : ControllerBase
     {
         private readonly IReportBookService reportBookService;
-        private readonly PdfGenerator pdfGenerator;
         private readonly BookViewGenerate bookViewGenerate;
 
-        public ReportBooksController(IReportBookService reportBookService, PdfGenerator pdfGenerator, BookViewGenerate bookViewGenerate)
+        public ReportBooksController(IReportBookService reportBookService, BookViewGenerate bookViewGenerate)
         {
             this.reportBookService = reportBookService;
-            this.pdfGenerator = pdfGenerator;
             this.bookViewGenerate = bookViewGenerate;
         }
 
@@ -47,14 +44,6 @@ namespace BookApp.Api.Controllers
             var pdf = await page.PdfAsync(new PagePdfOptions { Format = "A4" });
 
             return File(pdf, "application/pdf", "reportBook.pdf");
-
-            //var result = await reportBookService.GetAllAsync(token);
-
-            // Gerar o PDF
-            //var pdfStream = pdfGenerator.GeneratePdf(result);
-
-            // Retornar o PDF como arquivo para download
-            //return File(pdfStream, "application/pdf", "BookList.pdf");
         }
 
     }
