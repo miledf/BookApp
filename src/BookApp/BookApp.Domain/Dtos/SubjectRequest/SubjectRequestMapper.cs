@@ -1,11 +1,10 @@
-﻿using BookApp.Domain.Dtos.SubjectRequest;
-using BookApp.Infrastructure.Models;
+﻿using BookApp.Infrastructure.Models;
 
-namespace BookApp.Domain.Dtos.SubjectRequestMapper
+namespace BookApp.Domain.Dtos.SubjectRequest
 {
     public static class SubjectRequestMapper
     {
-        public static  Subject Map(this SubjectRequest.SubjectRequest subjectRequest)
+        public static  Subject Map(this SubjectRequest subjectRequest)
         {
             return new Subject
             {

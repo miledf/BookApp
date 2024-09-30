@@ -1,5 +1,4 @@
-﻿using BookApp.Domain.Dtos.BookRequest;
-using BookApp.Domain.Dtos.SubjectRequest;
+﻿using BookApp.Domain.Dtos.SubjectRequest;
 
 namespace BookApp.Domain.Services
 {

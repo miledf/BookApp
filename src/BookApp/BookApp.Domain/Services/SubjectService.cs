@@ -2,7 +2,6 @@
 using BookApp.Domain.Dtos.SubjectRequest;
 using BookApp.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using BookApp.Domain.Dtos.SubjectRequestMapper;
 
 namespace BookApp.Domain.Services
 {
@@ -27,17 +26,17 @@ namespace BookApp.Domain.Services
 
         public async Task<int> UpdateAsync(int id, SubjectRequest updateRequest, CancellationToken token)
         {
-            var book = await appDbContext.Subjects.FindAsync(id, token);
+            var subject = await appDbContext.Subjects.FindAsync(id, token);
 
-            if (book != null)
+            if (subject != null)
             {
-                book.Description = updateRequest.Description;
+                subject.Description = updateRequest.Description;
 
-                appDbContext.Update(book);
+                appDbContext.Update(subject);
 
                 await appDbContext.SaveChangesAsync(token);
 
-                return book.Id;
+                return subject.Id;
             }
 
             return 0;
