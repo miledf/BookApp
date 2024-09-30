@@ -18,7 +18,9 @@ namespace BookApp.Domain.Services
             var book = createBookRequest.Map();
 
             await appDbContext.Books.AddAsync(book, token);
-            return await appDbContext.SaveChangesAsync(token);
+            await appDbContext.SaveChangesAsync(token);
+
+            return book.Id;
         }
 
         public async Task<int> UpdateAsync(int id, BookRequest updateBookRequest, CancellationToken token)
@@ -34,7 +36,9 @@ namespace BookApp.Domain.Services
 
                 appDbContext.Update(book);
 
-                return await appDbContext.SaveChangesAsync(token);
+                await appDbContext.SaveChangesAsync(token);
+
+                return book.Id;
             }
 
             return 0;
@@ -42,8 +46,7 @@ namespace BookApp.Domain.Services
 
         public async Task DeleteAsync(int id, CancellationToken token)
         {
-            var book = await appDbContext.Books.FindAsync(id, token);
-            appDbContext.Books.Remove(book);
+            appDbContext.Books.Remove(await appDbContext.Books.SingleAsync(x=>x.Id == id, token));
             await appDbContext.SaveChangesAsync();
         }
 

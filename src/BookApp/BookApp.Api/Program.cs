@@ -2,6 +2,7 @@ using BookApp.Domain.Services;
 using BookApp.Domain.Validators;
 using BookApp.Infrastructure.Context;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddValidatorsFromAssemblyContaining<BookRequestValidator>();
+builder.Services.AddFluentValidation(fv=> fv.RegisterValidatorsFromAssemblyContaining<BookRequestValidator>());
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(police =>
+    {
+        police.AllowAnyOrigin();
+        police.AllowAnyHeader();
+        police.AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -28,6 +39,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
