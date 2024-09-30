@@ -34,7 +34,7 @@ export class BookFormComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(40)]],
       publisher: ['', [Validators.required ,Validators.maxLength(40)]],
       edition: [null, [Validators.required, Validators.min(1)]],
-      yearPublication: ['', [Validators.required, Validators.maxLength(4)]],
+      yearPublication: ['', [Validators.required, this.validateYearLessThanThisYear()]],
     });
 
     if (this.book) {
@@ -45,6 +45,21 @@ export class BookFormComponent implements OnInit {
   submit() {
     this.onSubmit.emit(this.form.value);
     this.form.controls  
+  }
+
+  validateYearLessThanThisYear() {
+    return (control: any) => {
+      const valor = control.value;
+      const anoAtual = new Date().getFullYear();
+
+      // Verifica se o valor é um ano válido
+      if (valor && /^[0-9]{4}$/.test(valor)) {
+        const anoDigitado = parseInt(valor, 10);
+        return anoDigitado <= anoAtual ? null : { anoInvalido: true };
+      }
+
+      return { anoInvalido: true }; // Se o valor não for um ano válido
+    };
   }
 
   get title(){    return this.form.get('title') }
