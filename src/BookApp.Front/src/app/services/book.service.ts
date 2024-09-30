@@ -20,14 +20,14 @@ export class BookService {
   }
 
   DeleteBook(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 
   CreateBook(book: Book) {
-    return this.http.post(`${this.apiUrl}`, book);
+    return this.http.post<any>(`${this.apiUrl}`, book);
   }
 
   UpdateBook(book: Book) {
-    return this.http.put(`${this.apiUrl}/${book.id}`, book);
+    return this.http.put<any>(`${this.apiUrl}/${book.id}`, book);
   }
 }
