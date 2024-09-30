@@ -7,12 +7,12 @@ namespace BookApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReportBooksController : ControllerBase
+    public class ReportsController : ControllerBase
     {
         private readonly IReportBookService reportBookService;
         private readonly BookViewGenerate bookViewGenerate;
 
-        public ReportBooksController(IReportBookService reportBookService, BookViewGenerate bookViewGenerate)
+        public ReportsController(IReportBookService reportBookService, BookViewGenerate bookViewGenerate)
         {
             this.reportBookService = reportBookService;
             this.bookViewGenerate = bookViewGenerate;
