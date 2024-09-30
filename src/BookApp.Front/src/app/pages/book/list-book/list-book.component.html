@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <button
+    class="btn btn-success w-100"
+    [routerLink]="['/create-book']"
+    routerLinkActive="router-link-active"
+  >
+    Cadastrar novo Livro
+  </button>
+  <div>
+    <!-- <label class="form-label">Pesquisar:</label> -->
+    <input
+      class="form-control mt-5"
+      type="text"
+      placeholder="Pesquise"
+      (input)="search($event)"
+    />
+  </div>
+
+  <table class="table table-hover table-bordered mt-5">
+    <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Editora</th>
+        <th>Edição</th>
+        <th>Ano Publicação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (books.length > 0) { @for (book of books; track $index) {
+      <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.publisher }}</td>
+        <td>{{ book.edition }}ª</td>
+        <td>{{ book.yearPublication }}</td>
+        <td>
+          <button class="btn btn-warning mx-2" [routerLink]="['/update-book', book.id ]">Editar</button>
+          <button class="btn btn-info mx-2" [routerLink]="['/details-book', book.id ]">Detalhes</button>
+          <button class="btn btn-danger mx-2" (click)="remove(book.id!)">Excluir</button>
+        </td>
+      </tr>
+      } } @else {
+      <tr class="text-center">
+        <td colspan="7">Nenhum livro cadastrado</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

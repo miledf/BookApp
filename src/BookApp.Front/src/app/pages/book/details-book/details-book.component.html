@@ -1,0 +1,48 @@
+@if (book) {
+<div class="container mt-5">
+  <h1>Detalhes Livro</h1>
+
+  <form >
+    <div class="form-floating mb-3">
+      <input
+      type="text"
+      class="form-control"
+      disabled
+      value="{{book.title}}"
+      />
+      <label class="form-label" for="title">Título:</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+      type="text"
+      class="form-control"
+      disabled
+      value="{{book.publisher}}"
+      />
+      <label class="form-label" for="publisher">Editora:</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+      type="text"
+      class="form-control"
+      disabled
+      value="{{book.edition}}"
+      />
+      <label class="form-label" class="form-label" for="edition">Edição:</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+      type="text"
+      class="form-control"
+      disabled
+      value="{{book.yearPublication}}"
+      />
+      <label class="form-label" for="yearPublication">Ano Publicação:</label>
+    </div>
+
+    <div class="d-flex mt-5">
+      <a class="btn btn-info w-100" [routerLink]="['/']">Voltar</a>
+    </div>
+  </form>
+</div>
+}

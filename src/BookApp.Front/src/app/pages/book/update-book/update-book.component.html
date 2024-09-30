@@ -1,0 +1,5 @@
+@if (book) {
+<div>
+    <app-book-form [book]="book" (onSubmit)="updateBook($event)" [btnAction]="btnAction" [btnDescription]="btnDescription"></app-book-form>
+</div>
+}
