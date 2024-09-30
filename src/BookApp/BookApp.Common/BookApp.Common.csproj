@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="PDFsharp" Version="6.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookApp.Domain\BookApp.Domain.csproj" />
     <ProjectReference Include="..\BookApp.Infrastructure\BookApp.Infrastructure.csproj" />
   </ItemGroup>
 

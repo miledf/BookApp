@@ -1,0 +1,63 @@
+﻿@using BookApp.Infrastructure.Models
+<html lang="en">
+<head>
+    <title>Lista de Livros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Livros</h1>
+    <table>
+        <tr>
+            <th>Título</th>
+            <th>Edição</th>
+            <th>Ano de Publicação</th>
+            <th>Autores</th>
+            <th>Assuntos</th>
+        </tr>
+        @if (BooksView != null)
+        {
+            @foreach (var bookView in BooksView)
+            {
+                <tr>
+                    <td>@bookView.Title</td>
+                    <td>@bookView.Edition</td>
+                    <td>@bookView.YearPublication</td>
+                    <td>@bookView.Authors</td>
+                    <td>@bookView.Subjects</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr colspan="5">Nenhum livro encontrado.</tr>
+        }
+    </table>
+</body>
+</html>
+
+@code {
+    [Parameter] public List<BooksView> BooksView { get; set; }
+}
